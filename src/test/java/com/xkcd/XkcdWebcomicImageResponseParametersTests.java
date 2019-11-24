@@ -1,7 +1,7 @@
 package com.xkcd;
 
 import com.jayway.restassured.response.ValidatableResponse;
-import com.xkcd.request.RequestBuilder;
+import com.xkcd.request.XkcdWebcomicRequestBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +27,7 @@ public class XkcdWebcomicImageResponseParametersTests extends XkcdResponseParame
     @BeforeEach
     public void beforeEachXkcdWebcomicImageRequestParametersTest() {
 
-        this.xkcdWebcomicImageValidatableResponse = new RequestBuilder(xkcdWebcomicImageUrl)
+        this.xkcdWebcomicImageValidatableResponse = new XkcdWebcomicRequestBuilder(xkcdWebcomicImageUrl)
                 .sendRequestForXkcdWebcomic()
                 .then()
                 .assertThat();

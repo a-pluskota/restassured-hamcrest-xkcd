@@ -1,8 +1,8 @@
 package com.xkcd;
 
 import com.jayway.restassured.response.ValidatableResponse;
-import com.xkcd.request.RequestBuilder;
-import com.xkcd.response.ResponseJsonModel;
+import com.xkcd.request.XkcdWebcomicRequestBuilder;
+import com.xkcd.response.XkcdWebcomicResponseJsonModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +15,7 @@ public class XkcdResponseParametersTests {
 
     public XkcdResponseParametersTests() {
 
-        this.responseFormXkcd = new RequestBuilder()
+        this.responseFormXkcd = new XkcdWebcomicRequestBuilder()
                 .sendRequestForXkcdWebcomic()
                 .then()
                 .assertThat();
@@ -27,7 +27,7 @@ public class XkcdResponseParametersTests {
             int webcomicId
     ){
 
-        this.responseFormXkcd = new RequestBuilder(webcomicId)
+        this.responseFormXkcd = new XkcdWebcomicRequestBuilder(webcomicId)
                 .sendRequestForXkcdWebcomic()
                 .then()
                 .assertThat();
@@ -40,7 +40,7 @@ public class XkcdResponseParametersTests {
             int expectedHttpStatusCode
     ){
 
-        this.responseFormXkcd = new RequestBuilder(webcomicId)
+        this.responseFormXkcd = new XkcdWebcomicRequestBuilder(webcomicId)
                 .sendRequestForXkcdWebcomic()
                 .then()
                 .assertThat();
@@ -56,11 +56,11 @@ public class XkcdResponseParametersTests {
                 .all(true);
     }
 
-    protected ResponseJsonModel validateXkcdResponseJsonModel() {
+    public XkcdWebcomicResponseJsonModel validateXkcdResponseJsonModel() {
 
         return responseFormXkcd
                 .extract()
-                .as(ResponseJsonModel.class);
+                .as(XkcdWebcomicResponseJsonModel.class);
     }
 
     @Test
@@ -73,8 +73,16 @@ public class XkcdResponseParametersTests {
     @Test
     public void testXkcdResponseContentType(){
 
+        if (expectedHttpStatusCode == 200) {
+
+            responseFormXkcd
+                    .contentType("application/json");
+            return;
+        }
+
         responseFormXkcd
-                .contentType("application/json");
+                .contentType("text/html");
+
     }
 
     @Test

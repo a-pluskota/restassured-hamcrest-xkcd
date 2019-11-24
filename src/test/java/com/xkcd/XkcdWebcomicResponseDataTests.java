@@ -1,5 +1,6 @@
 package com.xkcd;
 
+import com.xkcd.response.XkcdWebcomicResponseJsonModel;
 import org.junit.jupiter.api.Test;
 
 import java.time.Year;
@@ -10,7 +11,7 @@ import static org.hamcrest.number.OrderingComparison.*;
 
 public class XkcdWebcomicResponseDataTests extends XkcdWebcomicImageResponseParametersTests {
 
-    private ExpectedDataForSelectedComics expectedDataForSelectedComic;
+    private XkcdWebcomicResponseJsonModel expectedDataForSelectedComic;
     private int num;
     private String day;
     private String month;
@@ -24,18 +25,26 @@ public class XkcdWebcomicResponseDataTests extends XkcdWebcomicImageResponsePara
     private String transcript;
 
     public XkcdWebcomicResponseDataTests(
-            ExpectedDataForSelectedComics expectedDataForSelectedComics
+            XkcdWebcomicResponseJsonModel expectedDataForSelectedComic
     ) {
 
-        super(expectedDataForSelectedComics.getNum());
+        super(expectedDataForSelectedComic
+                .getNum());
 
-        this.expectedDataForSelectedComic = expectedDataForSelectedComics;
+        this.expectedDataForSelectedComic = expectedDataForSelectedComic;
         this.num = validateXkcdResponseJsonModel().getNum();
         this.day = validateXkcdResponseJsonModel().getDay();
         this.month = validateXkcdResponseJsonModel().getMonth();
         this.year = validateXkcdResponseJsonModel().getYear();
         this.safeTitle = validateXkcdResponseJsonModel().getSafeTitle();
+        this.alt = validateXkcdResponseJsonModel().getAlt();
+        this.img = validateXkcdResponseJsonModel().getImg();
+        this.title = validateXkcdResponseJsonModel().getTitle();
+        this.link = validateXkcdResponseJsonModel().getLink();
+        this.news = validateXkcdResponseJsonModel().getNews();
+        this.transcript = validateXkcdResponseJsonModel().getTranscript();
     }
+
 
     @Test
     public void testXkcdWebcomicResponseNumField(){
@@ -83,12 +92,69 @@ public class XkcdWebcomicResponseDataTests extends XkcdWebcomicImageResponsePara
     @Test
     public void testXkcdWebcomicResponseSafeTitleField(){
 
-        System.out.println(safeTitle);
-
         assertThat(safeTitle, notNullValue());
         assertThat(safeTitle, isA(String.class));
         assertThat(safeTitle.length(), lessThanOrEqualTo(255));
         assertThat(safeTitle, is(expectedDataForSelectedComic.getSafeTitle()));
+
+    }
+
+    @Test
+    public void testXkcdWebcomicResponseAltField(){
+
+        assertThat(alt, notNullValue());
+        assertThat(alt, isA(String.class));
+        assertThat(alt.length(), lessThanOrEqualTo(255));
+        assertThat(alt, is(expectedDataForSelectedComic.getAlt()));
+
+    }
+
+    @Test
+    public void testXkcdWebcomicResponseImgField(){
+
+        assertThat(img, notNullValue());
+        assertThat(img, isA(String.class));
+        assertThat(img.length(), lessThanOrEqualTo(255));
+        assertThat(img, endsWith(".png"));
+        assertThat(img, startsWith("https://imgs.xkcd.com/comics/"));
+        assertThat(img, is(expectedDataForSelectedComic.getImg()));
+
+    }
+
+    @Test
+    public void testXkcdWebcomicResponseTitleField(){
+
+        assertThat(title, notNullValue());
+        assertThat(title, isA(String.class));
+        assertThat(title.length(), lessThanOrEqualTo(255));
+        assertThat(title, is(expectedDataForSelectedComic.getTitle()));
+
+    }
+
+    @Test
+    public void testXkcdWebcomicResponseLinkField(){
+
+        assertThat(link, notNullValue());
+        assertThat(link, isA(String.class));
+        assertThat(link, is(expectedDataForSelectedComic.getLink()));
+
+    }
+
+    @Test
+    public void testXkcdWebcomicResponseNewsField(){
+
+        assertThat(news, notNullValue());
+        assertThat(news, isA(String.class));
+        assertThat(news, is(expectedDataForSelectedComic.getNews()));
+
+    }
+
+    @Test
+    public void testXkcdWebcomicResponseTranscriptField(){
+
+        assertThat(transcript, notNullValue());
+        assertThat(transcript, isA(String.class));
+        assertThat(transcript, is(expectedDataForSelectedComic.getTranscript()));
 
     }
 }

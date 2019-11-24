@@ -14,6 +14,11 @@
 ```sh  
 $ mvn dependency:resolve  
 ```  
+
+#### Run tests: 
+```sh  
+$ mvn test 
+```  
   
 ## Documentation  
 #### Javadoc:

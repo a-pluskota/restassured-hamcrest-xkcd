@@ -10,13 +10,13 @@ import static com.jayway.restassured.RestAssured.given;
  * The default constructor performs operations on the latest webcomic.
  * If a comic id was specified when creating the object, requests will be built for that webcomic.
  */
-public class RequestBuilder {
+public class XkcdWebcomicRequestBuilder {
 
     private String requestXkcdUrl;
     private static final String XKCE_URL = "https://xkcd.com";
     private static final String XKCD_API_ROUTE = "/info.0.json ";
 
-    public RequestBuilder() {
+    public XkcdWebcomicRequestBuilder() {
 
         this.requestXkcdUrl = new StringBuilder()
                 .append(XKCE_URL)
@@ -24,7 +24,7 @@ public class RequestBuilder {
                 .toString();
     }
 
-    public RequestBuilder(
+    public XkcdWebcomicRequestBuilder(
             int webcomicId
     ) {
 
@@ -36,7 +36,7 @@ public class RequestBuilder {
                 .toString();
     }
 
-    public RequestBuilder(
+    public XkcdWebcomicRequestBuilder(
             String webcomicUrl
     ) {
 

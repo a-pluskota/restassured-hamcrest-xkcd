@@ -4,19 +4,48 @@ package com.xkcd.response;
  * This class provides a responsa model that allows easy
  * reading and validation of data received from the server.
  */
-public class ResponseJsonModel {
+public class XkcdWebcomicResponseJsonModel {
 
-    private String month;
     private int num;
-    private String link;
+    private String day;
+    private String month;
     private String year;
-    private String news;
     private String safe_title;
-    private String transcript;
     private String alt;
     private String img;
     private String title;
-    private String day;
+    private String link;
+    private String news;
+    private String transcript;
+
+    public XkcdWebcomicResponseJsonModel() {
+    }
+
+    public XkcdWebcomicResponseJsonModel(
+            int num,
+            String day,
+            String month,
+            String year,
+            String safe_title,
+            String alt,
+            String img,
+            String title,
+            String link,
+            String news,
+            String transcript
+    ) {
+        this.num = num;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.safe_title = safe_title;
+        this.alt = alt;
+        this.img = img;
+        this.title = title;
+        this.link = link;
+        this.news = news;
+        this.transcript = transcript;
+    }
 
     public String getMonth() {
         return month;
