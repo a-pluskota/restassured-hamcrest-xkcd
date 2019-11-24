@@ -6,6 +6,11 @@ import com.jayway.restassured.specification.RequestSpecification;
 
 import static com.jayway.restassured.RestAssured.given;
 
+/**
+ * This class provides methods for building and sending requests to xkcd API.
+ * The default constructor performs operations on the latest comic.
+ * If a comic id was specified when creating the object, requests will be built for that comic.
+ */
 public class RequestBuilder {
 
     private String requestXkcdUrl;
@@ -40,9 +45,12 @@ public class RequestBuilder {
                 .all(true);
     }
 
-    public Response sendRequestForXkcdWebcomic(
-            String requestUrl
-    ) {
+    /**
+     * Uses RESTassured to send request to xkcd API.
+     *
+     * @return Response with the data of the selected comic.
+     */
+    public Response sendRequestForXkcdWebcomic( ) {
 
         RestAssured.baseURI = requestXkcdUrl;
 
