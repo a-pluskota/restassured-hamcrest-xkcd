@@ -4,12 +4,15 @@ import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import static com.jayway.restassured.RestAssured.given;
 
 /**
  * This class provides methods for building and sending requests to xkcd API.
- * The default constructor performs operations on the latest comic.
- * If a comic id was specified when creating the object, requests will be built for that comic.
+ * The default constructor performs operations on the latest webcomic.
+ * If a comic id was specified when creating the object, requests will be built for that webcomic.
  */
 public class RequestBuilder {
 
@@ -37,6 +40,13 @@ public class RequestBuilder {
                 .toString();
     }
 
+    public RequestBuilder(
+            String webcomicUrl
+    ) {
+
+        this.requestXkcdUrl = webcomicUrl;
+    }
+
     private RequestSpecification bulidXkcdRequestSpecification() {
 
         return given()
@@ -48,15 +58,13 @@ public class RequestBuilder {
     /**
      * Uses RESTassured to send request to xkcd API.
      *
-     * @return Response with the data of the selected comic.
+     * @return Response with the data of the selected webcomic.
      */
     public Response sendRequestForXkcdWebcomic( ) {
 
-        RestAssured.baseURI = requestXkcdUrl;
-
         return bulidXkcdRequestSpecification()
                 .when()
-                .get();
+                .get(requestXkcdUrl);
     }
 
 
