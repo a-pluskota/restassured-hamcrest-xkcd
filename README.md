@@ -42,16 +42,3 @@ $ mvn surefire-report:report-only
 ```  
 * generated in file: 
 ```target/site/surefire-report.html```
-
-## Run parameters  
-To execute project with parameters, in command line type:   
-```sh  
-$ -Dname_of_parameter=value_of_parameter  
-```  
-#### Available parameters:
-
-* ##### Chosen test suit:
-```sh  
-$ -Dgroups=SUIT_NAME
-```  
-Available suits: ,

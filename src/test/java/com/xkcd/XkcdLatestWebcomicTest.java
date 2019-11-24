@@ -1,4 +1,4 @@
 package com.xkcd;
 
-public class XkcdLatestWebcomicTest extends XkcdWebcomicImageRequestParametersTests {
+public class XkcdLatestWebcomicTest extends XkcdWebcomicImageResponseParametersTests {
 }

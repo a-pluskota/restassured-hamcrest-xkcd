@@ -11,7 +11,7 @@ public class ResponseJsonModel {
     private String link;
     private String year;
     private String news;
-    private String safeTitle;
+    private String safe_title;
     private String transcript;
     private String alt;
     private String img;
@@ -39,7 +39,7 @@ public class ResponseJsonModel {
     }
 
     public String getSafeTitle() {
-        return safeTitle;
+        return safe_title;
     }
 
     public String getTranscript() {

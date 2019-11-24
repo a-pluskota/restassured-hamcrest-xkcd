@@ -1,11 +1,7 @@
 package com.xkcd.request;
 
-import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 import static com.jayway.restassured.RestAssured.given;
 
@@ -66,6 +62,5 @@ public class RequestBuilder {
                 .when()
                 .get(requestXkcdUrl);
     }
-
 
 }

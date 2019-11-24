@@ -2,17 +2,30 @@ package com.xkcd;
 
 import com.jayway.restassured.response.ValidatableResponse;
 import com.xkcd.request.RequestBuilder;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class XkcdWebcomicImageRequestParametersTests extends XkcdRequestParametersTests {
+public class XkcdWebcomicImageResponseParametersTests extends XkcdResponseParametersTests {
 
     private String xkcdWebcomicImageUrl;
     private ValidatableResponse xkcdWebcomicImageValidatableResponse;
 
-    public XkcdWebcomicImageRequestParametersTests() {
+    public XkcdWebcomicImageResponseParametersTests() {
 
         this.xkcdWebcomicImageUrl = validateXkcdResponseJsonModel()
                 .getImg();
+    }
+
+    public XkcdWebcomicImageResponseParametersTests(int webcomicId) {
+
+        super(webcomicId);
+
+        this.xkcdWebcomicImageUrl = validateXkcdResponseJsonModel()
+                .getImg();
+    }
+
+    @BeforeEach
+    public void beforeEachXkcdWebcomicImageRequestParametersTest() {
 
         this.xkcdWebcomicImageValidatableResponse = new RequestBuilder(xkcdWebcomicImageUrl)
                 .sendRequestForXkcdWebcomic()
@@ -28,7 +41,7 @@ public class XkcdWebcomicImageRequestParametersTests extends XkcdRequestParamete
     }
 
     @Test
-    public void testXkcdResponseContentType(){
+    public void testXkcdWebcomicImageResponseContentType(){
 
         xkcdWebcomicImageValidatableResponse
                 .contentType("image/png");
