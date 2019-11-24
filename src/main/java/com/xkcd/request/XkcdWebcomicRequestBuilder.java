@@ -9,6 +9,7 @@ import static com.jayway.restassured.RestAssured.given;
  * This class provides methods for building and sending requests to xkcd API.
  * The default constructor performs operations on the latest webcomic.
  * If a comic id was specified when creating the object, requests will be built for that webcomic.
+ * If a comic url was specified when creating the object, requests will be built for that url.
  */
 public class XkcdWebcomicRequestBuilder {
 
