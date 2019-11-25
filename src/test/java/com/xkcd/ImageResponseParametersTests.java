@@ -1,22 +1,22 @@
 package com.xkcd;
 
 import com.jayway.restassured.response.ValidatableResponse;
-import com.xkcd.request.XkcdWebcomicRequestBuilder;
+import com.xkcd.request.RequestBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class XkcdWebcomicImageResponseParametersTests extends XkcdResponseParametersTests {
+public class ImageResponseParametersTests extends ResponseParametersTests {
 
     private String xkcdWebcomicImageUrl;
     private ValidatableResponse xkcdWebcomicImageValidatableResponse;
 
-    public XkcdWebcomicImageResponseParametersTests() {
+    public ImageResponseParametersTests() {
 
         this.xkcdWebcomicImageUrl = validateXkcdResponseJsonModel()
                 .getImg();
     }
 
-    public XkcdWebcomicImageResponseParametersTests(int webcomicId) {
+    public ImageResponseParametersTests(int webcomicId) {
 
         super(webcomicId);
 
@@ -27,7 +27,7 @@ public class XkcdWebcomicImageResponseParametersTests extends XkcdResponseParame
     @BeforeEach
     public void beforeEachXkcdWebcomicImageRequestParametersTest() {
 
-        this.xkcdWebcomicImageValidatableResponse = new XkcdWebcomicRequestBuilder(xkcdWebcomicImageUrl)
+        this.xkcdWebcomicImageValidatableResponse = new RequestBuilder(xkcdWebcomicImageUrl)
                 .sendRequestForXkcdWebcomic()
                 .then()
                 .assertThat();

@@ -1,6 +1,6 @@
 package com.xkcd;
 
-import com.xkcd.response.XkcdWebcomicResponseJsonModel;
+import com.xkcd.response.ResponseJsonModel;
 import org.junit.jupiter.api.Test;
 
 import java.time.Year;
@@ -9,9 +9,9 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.number.OrderingComparison.*;
 
-public class XkcdWebcomicResponseDataTests extends XkcdWebcomicImageResponseParametersTests {
+public class ResponseDataTests extends ImageResponseParametersTests {
 
-    private XkcdWebcomicResponseJsonModel expectedDataForSelectedComic;
+    private ResponseJsonModel expectedDataForSelectedComic;
     private int num;
     private String day;
     private String month;
@@ -24,8 +24,8 @@ public class XkcdWebcomicResponseDataTests extends XkcdWebcomicImageResponsePara
     private String news;
     private String transcript;
 
-    public XkcdWebcomicResponseDataTests(
-            XkcdWebcomicResponseJsonModel expectedDataForSelectedComic
+    public ResponseDataTests(
+            ResponseJsonModel expectedDataForSelectedComic
     ) {
 
         super(expectedDataForSelectedComic

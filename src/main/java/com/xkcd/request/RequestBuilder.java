@@ -7,17 +7,17 @@ import static com.jayway.restassured.RestAssured.given;
 
 /**
  * This class provides methods for building and sending requests to xkcd API.
- * The default constructor performs operations on the latest webcomic.
- * If a comic id was specified when creating the object, requests will be built for that webcomic.
- * If a comic url was specified when creating the object, requests will be built for that url.
  */
-public class XkcdWebcomicRequestBuilder {
+public class RequestBuilder {
 
     private String requestXkcdUrl;
     private static final String XKCE_URL = "https://xkcd.com";
     private static final String XKCD_API_ROUTE = "/info.0.json ";
 
-    public XkcdWebcomicRequestBuilder() {
+    /**
+     * The default constructor performs operations on the latest webcomic.
+     */
+    public RequestBuilder() {
 
         this.requestXkcdUrl = new StringBuilder()
                 .append(XKCE_URL)
@@ -25,7 +25,13 @@ public class XkcdWebcomicRequestBuilder {
                 .toString();
     }
 
-    public XkcdWebcomicRequestBuilder(
+    /**
+     * When a comic id is specified when creating the object,
+     * requests will be built for that webcomic.
+     *
+     * @param webcomicId
+     */
+    public RequestBuilder(
             int webcomicId
     ) {
 
@@ -37,7 +43,13 @@ public class XkcdWebcomicRequestBuilder {
                 .toString();
     }
 
-    public XkcdWebcomicRequestBuilder(
+    /**
+     * When a comic url was specified when creating the object, r
+     * equests will be built for that url.
+     *
+     * @param webcomicUrl
+     */
+    public RequestBuilder(
             String webcomicUrl
     ) {
 

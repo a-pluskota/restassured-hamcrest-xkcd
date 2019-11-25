@@ -4,7 +4,7 @@ package com.xkcd.response;
  * This class provides a responsa model that allows easy
  * reading and validation of data received from the server.
  */
-public class XkcdWebcomicResponseJsonModel {
+public class ResponseJsonModel {
 
     private int num;
     private String day;
@@ -18,10 +18,10 @@ public class XkcdWebcomicResponseJsonModel {
     private String news;
     private String transcript;
 
-    public XkcdWebcomicResponseJsonModel() {
+    public ResponseJsonModel() {
     }
 
-    public XkcdWebcomicResponseJsonModel(
+    public ResponseJsonModel(
             int num,
             String day,
             String month,

@@ -17,7 +17,7 @@ $ mvn dependency:resolve
 
 #### Run tests: 
 ```sh  
-$ mvn test 
+$ mvn test -Dgroups=TEST_CASES
 ```  
   
 ## Documentation  
@@ -28,18 +28,11 @@ $ mvn javadoc:javadoc
 ```  
 * generated in file: 
 ```target/site/apidocs/index.html```
-#### Logs:
-* generated in file: 
-```target/log4j/application-logs.log```
 
 #### Test Reports:  
 * ##### turn on reports mode:
 ```sh  
 $ mvn site -DgenerateReports=false  
-```  
-* ##### run tests: 
-```sh  
-$ mvn test 
 ```  
 * ##### generate reports:
 ```sh  

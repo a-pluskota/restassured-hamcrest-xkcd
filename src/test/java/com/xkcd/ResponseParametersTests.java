@@ -1,21 +1,22 @@
 package com.xkcd;
 
 import com.jayway.restassured.response.ValidatableResponse;
-import com.xkcd.request.XkcdWebcomicRequestBuilder;
-import com.xkcd.response.XkcdWebcomicResponseJsonModel;
+import com.xkcd.request.RequestBuilder;
+import com.xkcd.response.ResponseJsonModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
-public class XkcdResponseParametersTests {
+public class ResponseParametersTests {
 
+    public static final String TEST_CASE_TO_RUN = "TEST_CASES";
     protected ValidatableResponse responseFormXkcd;
     private int expectedHttpStatusCode;
 
-    public XkcdResponseParametersTests() {
+    public ResponseParametersTests() {
 
-        this.responseFormXkcd = new XkcdWebcomicRequestBuilder()
+        this.responseFormXkcd = new RequestBuilder()
                 .sendRequestForXkcdWebcomic()
                 .then()
                 .assertThat();
@@ -23,11 +24,11 @@ public class XkcdResponseParametersTests {
         this.expectedHttpStatusCode = 200;
     }
 
-    public XkcdResponseParametersTests(
+    public ResponseParametersTests(
             int webcomicId
     ){
 
-        this.responseFormXkcd = new XkcdWebcomicRequestBuilder(webcomicId)
+        this.responseFormXkcd = new RequestBuilder(webcomicId)
                 .sendRequestForXkcdWebcomic()
                 .then()
                 .assertThat();
@@ -35,12 +36,12 @@ public class XkcdResponseParametersTests {
         this.expectedHttpStatusCode = 200;
     }
 
-    public XkcdResponseParametersTests(
+    public ResponseParametersTests(
             int webcomicId,
             int expectedHttpStatusCode
     ){
 
-        this.responseFormXkcd = new XkcdWebcomicRequestBuilder(webcomicId)
+        this.responseFormXkcd = new RequestBuilder(webcomicId)
                 .sendRequestForXkcdWebcomic()
                 .then()
                 .assertThat();
@@ -56,11 +57,11 @@ public class XkcdResponseParametersTests {
                 .all(true);
     }
 
-    public XkcdWebcomicResponseJsonModel validateXkcdResponseJsonModel() {
+    public ResponseJsonModel validateXkcdResponseJsonModel() {
 
         return responseFormXkcd
                 .extract()
-                .as(XkcdWebcomicResponseJsonModel.class);
+                .as(ResponseJsonModel.class);
     }
 
     @Test
