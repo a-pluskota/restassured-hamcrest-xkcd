@@ -12,7 +12,7 @@ public class ImageResponseParametersTests extends ResponseParametersTests {
 
     public ImageResponseParametersTests() {
 
-        this.xkcdWebcomicImageUrl = validateXkcdResponseJsonModel()
+        this.xkcdWebcomicImageUrl = extractXkcdResponseJsonModel()
                 .getImg();
     }
 
@@ -20,7 +20,7 @@ public class ImageResponseParametersTests extends ResponseParametersTests {
 
         super(webcomicId);
 
-        this.xkcdWebcomicImageUrl = validateXkcdResponseJsonModel()
+        this.xkcdWebcomicImageUrl = extractXkcdResponseJsonModel()
                 .getImg();
     }
 

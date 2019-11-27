@@ -12,7 +12,7 @@ public class WebcomicWithNonExistentIdTest extends ResponseParametersTests {
 
         super(
                 new ResponseParametersTests()
-                        .validateXkcdResponseJsonModel()
+                        .extractXkcdResponseJsonModel()
                         .getNum() + 1,
                 404);
     }

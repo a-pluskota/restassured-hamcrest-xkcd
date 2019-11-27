@@ -13,7 +13,7 @@ public class RandomWebcomicTest extends ImageResponseParametersTests {
 
     private static final int RANDOM_WEBCOMIC_ID = new Random()
             .nextInt((new ResponseParametersTests()
-                    .validateXkcdResponseJsonModel()
+                    .extractXkcdResponseJsonModel()
                     .getNum() - 117) + 117);
 
     public RandomWebcomicTest() {

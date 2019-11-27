@@ -9,9 +9,10 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.number.OrderingComparison.*;
 
-public class ResponseDataTests extends ImageResponseParametersTests {
+public class ResponseDetailsTests extends ImageResponseParametersTests {
 
     private ResponseJsonModel expectedDataForSelectedComic;
+    private ResponseJsonModel responseJsonModel;
     private int num;
     private String day;
     private String month;
@@ -24,7 +25,7 @@ public class ResponseDataTests extends ImageResponseParametersTests {
     private String news;
     private String transcript;
 
-    public ResponseDataTests(
+    public ResponseDetailsTests(
             ResponseJsonModel expectedDataForSelectedComic
     ) {
 
@@ -32,17 +33,18 @@ public class ResponseDataTests extends ImageResponseParametersTests {
                 .getNum());
 
         this.expectedDataForSelectedComic = expectedDataForSelectedComic;
-        this.num = validateXkcdResponseJsonModel().getNum();
-        this.day = validateXkcdResponseJsonModel().getDay();
-        this.month = validateXkcdResponseJsonModel().getMonth();
-        this.year = validateXkcdResponseJsonModel().getYear();
-        this.safeTitle = validateXkcdResponseJsonModel().getSafeTitle();
-        this.alt = validateXkcdResponseJsonModel().getAlt();
-        this.img = validateXkcdResponseJsonModel().getImg();
-        this.title = validateXkcdResponseJsonModel().getTitle();
-        this.link = validateXkcdResponseJsonModel().getLink();
-        this.news = validateXkcdResponseJsonModel().getNews();
-        this.transcript = validateXkcdResponseJsonModel().getTranscript();
+        this.responseJsonModel = extractXkcdResponseJsonModel();
+        this.num = responseJsonModel.getNum();
+        this.day = responseJsonModel.getDay();
+        this.month = responseJsonModel.getMonth();
+        this.year = responseJsonModel.getYear();
+        this.safeTitle = responseJsonModel.getSafeTitle();
+        this.alt = responseJsonModel.getAlt();
+        this.img = responseJsonModel.getImg();
+        this.title = responseJsonModel.getTitle();
+        this.link = responseJsonModel.getLink();
+        this.news = responseJsonModel.getNews();
+        this.transcript = responseJsonModel.getTranscript();
     }
 
 

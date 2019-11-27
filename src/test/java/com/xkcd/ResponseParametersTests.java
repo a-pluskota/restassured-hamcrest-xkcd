@@ -11,12 +11,12 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 public class ResponseParametersTests {
 
     public static final String TEST_CASE_TO_RUN = "TEST_CASES";
-    protected ValidatableResponse responseFormXkcd;
+    protected ValidatableResponse validatableResponse;
     private int expectedHttpStatusCode;
 
     public ResponseParametersTests() {
 
-        this.responseFormXkcd = new RequestBuilder()
+        this.validatableResponse = new RequestBuilder()
                 .sendRequestForXkcdWebcomic()
                 .then()
                 .assertThat();
@@ -28,7 +28,7 @@ public class ResponseParametersTests {
             int webcomicId
     ){
 
-        this.responseFormXkcd = new RequestBuilder(webcomicId)
+        this.validatableResponse = new RequestBuilder(webcomicId)
                 .sendRequestForXkcdWebcomic()
                 .then()
                 .assertThat();
@@ -41,7 +41,7 @@ public class ResponseParametersTests {
             int expectedHttpStatusCode
     ){
 
-        this.responseFormXkcd = new RequestBuilder(webcomicId)
+        this.validatableResponse = new RequestBuilder(webcomicId)
                 .sendRequestForXkcdWebcomic()
                 .then()
                 .assertThat();
@@ -52,14 +52,14 @@ public class ResponseParametersTests {
     @BeforeEach
     public void beforeEachXkcdRequestParametersTest() {
 
-        responseFormXkcd
+        validatableResponse
                 .log()
                 .all(true);
     }
 
-    public ResponseJsonModel validateXkcdResponseJsonModel() {
+    public ResponseJsonModel extractXkcdResponseJsonModel() {
 
-        return responseFormXkcd
+        return validatableResponse
                 .extract()
                 .as(ResponseJsonModel.class);
     }
@@ -67,7 +67,7 @@ public class ResponseParametersTests {
     @Test
     public void testXkcdResponseHttpStatusCode(){
 
-        responseFormXkcd
+        validatableResponse
                 .statusCode(expectedHttpStatusCode);
     }
 
@@ -76,12 +76,12 @@ public class ResponseParametersTests {
 
         if (expectedHttpStatusCode == 200) {
 
-            responseFormXkcd
+            validatableResponse
                     .contentType("application/json");
             return;
         }
 
-        responseFormXkcd
+        validatableResponse
                 .contentType("text/html");
 
     }
@@ -92,7 +92,7 @@ public class ResponseParametersTests {
         assumeTrue(expectedHttpStatusCode == 200,
                 "Expected http status code is different then 200. Test should have been aborted.");
 
-        validateXkcdResponseJsonModel();
+        extractXkcdResponseJsonModel();
     }
 
 }
